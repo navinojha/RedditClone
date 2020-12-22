@@ -1,0 +1,30 @@
+<div class="row mb-4">
+  <div class="col-sm-8">
+    <h3><%= @community.name %></h3>
+  </div>
+  <div class="col-sm-4">
+    <% if @is_subscribed %>
+       <%= link_to "Create new post", new_community_post_path(@community), class: "btn btn-primary float-right" %>
+    <% else %>
+       <%= render partial: "communities/subscribe", locals: { community_id: @community.id } %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8">
+    <%= render partial: "posts/list", locals: { posts: @posts } %>
+  </div>
+  
+  <div class="col-sm-4">
+    <div class="card p-3 mt-2">
+      <h5>About Community</h5>
+      <p class="mt-3"><%= @community.summary %></p>
+      <p><%= pluralize @subscriber_count, "Member" %> </p>
+    </div>
+
+    <small>
+      <%= simple_format @community.rules %>
+    </small>
+  </div>
+</div>
