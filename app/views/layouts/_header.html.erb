@@ -1,5 +1,4 @@
-<div class="row">
-  <div class="col-12 pt-4 pb-3 ml-3">
+<div class="col-12 pt-0 pb-0 ml-4 mt-0">
     <div class="float-right">
       <% if account_signed_in? %>
         <div class="dropdown show">
@@ -9,17 +8,18 @@
           </a>
 
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <%= link_to "Profile", profile_path(current_account.username), class: "dropdown-item" %>
-              <%= link_to "Settings", edit_account_registration_path, class: "dropdown-item" %>
-                <%= link_to "Sign Out", destroy_account_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Profile" , profile_path(current_account.username), class: "dropdown-item" %>
+              <%= link_to "Settings" , edit_account_registration_path, class: "dropdown-item" %>
+                <%= link_to "Sign Out" , destroy_account_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </div>
         <% else %>
-          <%= link_to "Log In", new_account_session_path, class: "btn btn-outline-primary" %>
-            <%= link_to "Sign Up", new_account_registration_path, class: "btn btn-primary ml-3" %>
+          <%= link_to "Log In" , new_account_session_path, class: "btn btn-outline-primary mt-2" %>
+            <%= link_to "Sign Up" , new_account_registration_path, class: "btn btn-primary ml-3" %>
               <% end %>
     </div>
-    <p class="h3">
-      <%= link_to "Reddit Clone", root_path %>
+    <h3 class="ml-auto mr-auto"><%= link_to image_tag('reddit.png', alt: "rss feed" , height: 30, width: 30), root_path %> reddit
+    </h3>
+    </p>
   </div>
 </div>

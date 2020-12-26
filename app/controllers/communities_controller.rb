@@ -32,7 +32,7 @@ class CommunitiesController < ApplicationController
     private
 
     def set_community
-        @community = Community.find(params[:id])
+        @community = Community.find_by(name: params[:id])
     end
 
     def community_values

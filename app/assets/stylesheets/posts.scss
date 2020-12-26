@@ -1,0 +1,21 @@
+.upvote,
+.downvote {
+  display: block;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #000;
+
+  &.active {
+    color: #f0f0f0;
+  }
+
+  &:hover {
+    color: #ff0000;
+    cursor: pointer;
+  }
+}
+
+.navbar {
+  background-color: gray;
+}
