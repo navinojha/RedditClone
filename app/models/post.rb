@@ -12,4 +12,11 @@ class Post < ApplicationRecord
       0
     end
   end
+  searchkick
+  def search_data
+    {
+      title: title,
+      body: body
+    }
+  end
 end

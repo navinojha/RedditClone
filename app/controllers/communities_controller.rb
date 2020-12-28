@@ -13,6 +13,15 @@ class CommunitiesController < ApplicationController
         @subscription = Subscription.new
     end
 
+    def search
+        search = params[:q].present? ? params[:q] : nil
+        @posts = if search
+            Community.search(search)
+        else
+            Community.all
+        end
+    end
+
 
     def new
         @community = Community.new
@@ -32,7 +41,7 @@ class CommunitiesController < ApplicationController
     private
 
     def set_community
-        @community = Community.find_by(name: params[:id])
+        @community = Community.find_by(params[:name])
     end
 
     def community_values

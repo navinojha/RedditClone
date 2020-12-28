@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :accounts
   get "u/:username", to: "public#profile", as: :profile
+  get "search", to: "posts#search"
 
   resources :communities do
     resources :posts

@@ -7,6 +7,15 @@ class PostsController < ApplicationController
         @posts = Post.all
     end
 
+    def search
+        search = params[:q].present? ? params[:q] : nil
+        @posts = if search
+            Post.search(search)
+        else
+            Post.all
+        end
+    end
+
     def show
        @comment = Comment.new
     end
@@ -23,6 +32,18 @@ class PostsController < ApplicationController
 
         if @post.save
             redirect_to community_path(@post.community_id)
+        else
+            @community = Community.find(params[:community_id])
+            render :new
+        end
+    end
+
+    def update
+        @post.account_id = current_account.id
+        @post.community_id = params[:community_id]
+
+        if @post.update
+            redirect_to edit_community_post_path(@post.community_id)
         else
             @community = Community.find(params[:community_id])
             render :new
